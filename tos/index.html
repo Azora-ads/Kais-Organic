@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/tos/styles.css">
+    <title>Admin - The Organic Studio</title>
+</head>
+<body>
+    <main>
+        <div class="container">
+            
+            <h1>The Organic Studio <br><span>Admin Panel</span></h1>
+            <div class="button-div">
+                <button class="launch-btn">Launch Lifestyle Studio</button>
+            </div>
+            <hr>
+            <div class="view-orders">
+                <a href="/tos/view-orders/">View Orders</a>
+            </div>
+            <h2>Manage Slides</h2>
+            <div class="edit-main-header">
+                <div class="add">
+                    <a href="/tos/header-slide/add/">Click to add new slide on landing page</a>
+                </div>
+                <div class="delete">
+                    <a href="/tos/header-slide/delete/">Click to delete a slide from landing page</a>
+                </div>
+            </div>
+            <h2>Manage Categories</h2>
+            <div class="edit-categories">
+                <div class="add">
+                    <a href="/tos/categories/add/">Click to add new category</a>
+                </div>
+                <div class="delete">
+                    <a href="/tos/categories/delete/">Click to delete a category</a>
+                </div>
+            </div>
+            <h2>Manage Products</h2>
+            <div class="edit-products">
+                <div class="add">
+                    <a href="/tos/products/add/">Click to add new product</a>
+                </div>
+                <div class="delete">
+                    <a href="/tos/products/delete/">Click to delete a product</a>
+                </div>
+            </div>
+            <h2>Manage Offers</h2>
+            <div class="edit-offers">
+                <div class="add">
+                    <a href="/tos/offers/add/">Click to add new offer</a>
+                </div>
+                <div class="delete">
+                    <a href="/tos/offers/delete/">Click to delete a offer</a>
+                </div>
+            </div>
+            <h2>Manage Blog</h2>
+            <div class="edit-posts">
+                <div class="add">
+                    <a href="/tos/blog/add/">Click to add new post to blog</a>
+                </div>
+                <div class="delete">
+                    <a href="/tos/blog/delete/">Click to delete a post from the blog</a>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+<style>
+    .container{
+        width: auto;
+    }
+    a{
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 100%;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-weight: 600;
+        text-underline-offset: 15px;
+        transition: all 0.2s ease-in-out;
+        color: #FFFFFF;
+        width: auto;
+        height: fit-content;
+        padding: 30px;
+        background: teal;
+        margin: 5px;
+        border-radius: 10px;
+        line-height: 200%;
+    }
+    a:hover{
+        color: aqua;
+        text-underline-offset: 1px;
+    }
+    h2{
+        font-size: 150%;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-weight: 400;
+    }
+    .launch-btn{
+        padding: 10px 20px;
+        border: none;
+        border: 2px solid green;
+        color: green;
+        border-radius: 60px;
+        color: green;
+        background: rgb(218, 248, 218);
+    }
+    .button-div{
+        display: flex;
+        justify-content: flex-end;
+    }
+    .edit-main-header , .edit-categories , .edit-products , .edit-products , .edit-offers , .edit-posts{
+        display: flex;
+        justify-content:stretch;
+        align-items: center;
+        gap: 10px;
+    }
+    @media screen and (max-width:900px){
+        .edit-main-header , .edit-categories , .edit-products , .edit-products , .edit-offers , .edit-posts{
+            display: block;
+        }
+    }
+
+</style>
+</html>

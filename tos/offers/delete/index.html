@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/tos/styles.css">
+    <title>Admin - The Organic Studio</title>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <a href="/tos/" style="text-decoration: none; font-size:16px; color:#999">Go Back</a>
+            <h1>Delete Offer Product</h1>
+            <div class="form">
+                <input type="text" placeholder="Paste Product URL" id="prid">
+                <br>
+                <label for="prid">
+                    Where i can find product Url?<br>
+                    <small>
+                        > Select the product from your offers <br>
+                        > Copy the url from address bar <br>
+                        > Paste here , we will find the product id and delete
+                    </small>
+                    <br>
+                    <small>Note : The Product Only Remove From Offer List , It Will Not Delete From Products
+                        List</small>
+                </label>
+                <button onclick="deleteData()">CONFIRM & Delete</button>
+
+
+            </div>
+        </div>
+    </main>
+</body>
+<style>
+    .container {
+        width: 90vw;
+    }
+
+    h1 {
+        margin-bottom: 30px;
+    }
+
+    button {
+        margin-top: 40px;
+        border: none;
+        display: flex;
+        justify-content: center;
+        padding: 15px 15px;
+        background-color: #EF665B;
+        color: #ffffff;
+        font-size: 0.75rem;
+        line-height: 1rem;
+        font-weight: 700;
+        text-align: center;
+        text-transform: uppercase;
+        vertical-align: middle;
+        align-items: center;
+        border-radius: 0.5rem;
+        user-select: none;
+        gap: 0.75rem;
+        box-shadow: 0 4px 6px -1px #488aec31, 0 2px 4px -1px #488aec17;
+        transition: all .6s ease;
+        width: 50%;
+    }
+
+    button:hover {
+        box-shadow: 0 10px 15px -3px #488aec4f, 0 4px 6px -2px #488aec17;
+    }
+
+    button:focus,
+    button:active {
+        opacity: .85;
+        box-shadow: none;
+    }
+
+    label {
+        color: #999;
+    }
+</style>
+<script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-storage.js"></script>
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyCV1Z8-EZWdUwPnsAiPrRn6hScbt9_AnHs",
+        authDomain: "kaisonline.firebaseapp.com",
+        projectId: "kaisonline",
+        storageBucket: "kaisonline.appspot.com",
+        messagingSenderId: "1038384566126",
+        appId: "1:1038384566126:web:0a2dab22a90c750066bb7f",
+        measurementId: "G-336STKC5HQ"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    const slidesRef = db.collection("site/tos/offers");
+
+    dataArray = [];
+    slidesRef.get()
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                const jsonObj1 = {
+                    "docid": doc.id,
+                    "prid": data.productid,
+                };
+                dataArray.push(jsonObj1);
+            });
+        })
+        .catch((error) => {
+            console.error("Error retrieving documents: ", error);
+        });
+
+    function deleteData() {
+        const url = new URL(document.getElementById('prid').value);
+        var pridurl = url.searchParams.get('productid');
+
+        var found = "0";
+        if (pridurl) {
+            for (let i = 0; i < dataArray.length; i++) {
+                if (pridurl == dataArray[i].prid) {
+                    found = "1";
+                    const db2 = firebase.firestore();
+                    const deldoc = db2.collection("site/tos/offers").doc(dataArray[i].docid); // Replace with the actual collection name and document ID
+
+                    deldoc.delete()
+                        .then(() => {
+                            window.location.href = '/tos/';
+                        })
+                        .catch((error) => {
+                            console.error("Error deleting document: ", error);
+                        });
+
+                }
+                if (found == "0") {
+                    alert("No Products Found In The Offer List From This URL")
+                }
+            }
+        } else {
+            alert('This Url Doesn\'t Contain Product ID , Try Another');
+        }
+    }
+</script>
+
+</html>

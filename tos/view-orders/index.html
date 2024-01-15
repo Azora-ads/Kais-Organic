@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/tos/styles.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Admin - The Organic Studio</title>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <a href="/tos/" style="text-decoration: none; font-size:16px; color:#999">Go Back</a>
+            <h1>Realtime Orders</h1><!--
+            <input type="text" placeholder="Search By OrderID" style="margin-top: 40px;">
+            <button>Search</button>
+            -->
+                <div class="lists" style="margin-top: 40px;" id="child-lists">
+                    
+                </div>
+        </div>
+        <div class="empty-list">
+            <iframe src="https://lottie.host/?file=ff477de4-9f1b-4da7-9029-1ba9bed507de/E0kAtwBwvc.json" frameborder="0"></iframe>
+            <h2>You Don't Have Any Orders Yet</h2>
+        </div>
+    </main>
+</body>
+<style>
+    .empty-list{
+        margin-top: 20px;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        display: none;
+    }
+    .empty-list h2{
+        opacity: 0.4;
+    }
+</style>
+<script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-database.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.15.5-0/firebase.js"></script>
+<script src="util.js"></script>
+
+</html>

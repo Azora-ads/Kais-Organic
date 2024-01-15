@@ -1,0 +1,512 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="x-ua-compatible" content="ie=edge">
+   <title>The Organic Studio - Your One-Stop Online Shop for Spices, Groceries, and Oils!</title>
+   <meta name="description" content="">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <!-- Place favicon.ico in the root directory -->
+   <link rel="shortcut icon" type="image/x-icon" href="/assets/img/logo/favicon.png">
+
+   <!-- CSS here -->
+   <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+   <link rel="stylesheet" href="/assets/css/animate.css">
+   <link rel="stylesheet" href="/assets/css/swiper-bundle.css">
+   <link rel="stylesheet" href="/assets/css/slick.css">
+   <link rel="stylesheet" href="/assets/css/magnific-popup.css">
+   <link rel="stylesheet" href="/assets/css/spacing.css">
+   <link rel="stylesheet" href="/assets/css/meanmenu.css">
+   <link rel="stylesheet" href="/assets/css/nice-select.css">
+   <link rel="stylesheet" href="/assets/css/fontawesome.min.css">
+   <link rel="stylesheet" href="/assets/css/icon-dukamarket.css">
+   <link rel="stylesheet" href="/assets/css/jquery-ui.css">
+   <link rel="stylesheet" href="/assets/css/main.css">
+   <link rel="stylesheet" href="/mystyles.css">
+
+</head>
+
+<body>
+
+   <div id="buffer">
+
+      <div class="error" id="error-alert">
+         <div class="error__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none">
+               <path fill="#393a37"
+                  d="m13 13h-2v-6h2zm0 4h-2v-2h2zm-1-15c-1.3132 0-2.61358.25866-3.82683.7612-1.21326.50255-2.31565 1.23915-3.24424 2.16773-1.87536 1.87537-2.92893 4.41891-2.92893 7.07107 0 2.6522 1.05357 5.1957 2.92893 7.0711.92859.9286 2.03098 1.6651 3.24424 2.1677 1.21325.5025 2.51363.7612 3.82683.7612 2.6522 0 5.1957-1.0536 7.0711-2.9289 1.8753-1.8754 2.9289-4.4189 2.9289-7.0711 0-1.3132-.2587-2.61358-.7612-3.82683-.5026-1.21326-1.2391-2.31565-2.1677-3.24424-.9286-.92858-2.031-1.66518-3.2443-2.16773-1.2132-.50254-2.5136-.7612-3.8268-.7612z">
+               </path>
+            </svg>
+         </div>
+
+         <div class="error__title">Connection Timeout</div>
+         <div class="error__close"><svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 20 20" height="20">
+               <path fill="#393a37"
+                  d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z">
+               </path>
+            </svg></div>
+      </div>
+      <svg viewBox="25 25 50 50" class="svg-spinner">
+         <circle r="20" cy="50" cx="50"></circle>
+      </svg>
+   </div>
+
+
+
+   <!-- Scroll-top -->
+   <button class="scroll-top scroll-to-target" data-target="html">
+      <i class="icon-chevrons-up"></i>
+   </button>
+   <!-- Scroll-top-end-->
+
+
+   <!-- header-area-start -->
+   <header>
+      <div id="header-sticky" class="header__main-area d-none d-xl-block">
+         <div class="container">
+            <div class="header__for-megamenu p-relative">
+               <div class="row align-items-center">
+                  <div class="col-xl-3">
+                     <div class="header__logo">
+                        <a href="/"><img src="/assets/img/logo/logo.png" alt="logo" style="height: 50px;"></a>
+                     </div>
+                  </div>
+                  <div class="col-xl-6">
+                     <div class="header__menu main-menu text-center">
+                        <nav id="mobile-menu">
+                           <ul>
+                              <li><a href="/">Home</a></li>
+                              </li>
+                              <li><a href="/all-products/">Products</a></li>
+                              </li>
+                              <li><a href="/my-cart/">My Cart</a></li>
+                              </li>
+                              <li><a href="/wishlist/">Wishlist</a></li>
+                              </li>
+                              <li><a href="/about-us/">About Us</a></li>
+                              <li><a href="/contact-us/">Contact Us</a></li>
+                           </ul>
+                        </nav>
+                     </div>
+                  </div>
+                  <div class="col-xl-3">
+                     <div class="header__info d-flex align-items-center">
+                        <div class="header__info-search tpcolor__purple ml-10">
+                           <button class="tp-search-toggle"><i class="icon-search"></i></button>
+                        </div>
+                        <div class="header__info-user tpcolor__yellow ml-10">
+                           <a href="/login/"><i class="icon-user"></i></a>
+                        </div>
+                        <div class="header__info-wishlist tpcolor__greenish ml-10">
+                           <a href="/wishlist/"><i class="icon-heart icons"></i></a>
+                        </div>
+                        <div class="header__info-cart tpcolor__oasis ml-10 tp-cart-toggle">
+                           <button id="cart-button"><i class="icon-cart"></i>
+                              <span id="cart-qnty-1">1</span>
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- header-search -->
+      <div class="tpsearchbar tp-sidebar-area">
+         <button class="tpsearchbar__close"><i class="icon-x"></i></button>
+         <div class="search-wrap text-center">
+            <div class="container">
+               <div class="row justify-content-center">
+                  <div class="col-6 pt-100 pb-100">
+                     <h2 class="tpsearchbar__title">What Are You Looking For?</h2>
+                     <div class="tpsearchbar__form">
+                        <form action="#">
+                           <input type="text" name="search" placeholder="Search Product...">
+                           <button class="tpsearchbar__search-btn"><i class="icon-search"></i></button>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="search-body-overlay"></div>
+      <!-- header-search-end -->
+
+      <!-- header-cart-start -->
+      <div class="tpcartinfo tp-cart-info-area p-relative">
+         <button class="tpcart__close"><i class="icon-x"></i></button>
+         <div class="tpcart">
+            <h4 class="tpcart__title">Your Cart</h4>
+            <div class="tpcart__product">
+               <div class="tpcart__product-list">
+                  <ul id="cart-lists">
+                  
+
+
+                  </ul>
+               </div>
+               <div class="tpcart__checkout">
+                  <div class="tpcart__total-price d-flex justify-content-between align-items-center">
+                     <span> Subtotal:</span>
+                     <span class="total-price" id="total-price-navbar"></span>
+                  </div>
+                  <div class="tpcart__checkout-btn">
+                     <a class="tpcart-btn mb-10" href="/my-cart/">View Cart</a>
+                     <a class="tpcheck-btn" href="/checkout/">Checkout</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="cartbody-overlay"></div>
+      <!-- header-cart-end -->
+
+      <!-- mobile-menu-area -->
+      <div id="header-sticky-2" class="tpmobile-menu d-xl-none">
+         <div class="container-fluid">
+            <div class="row align-items-center">
+               <div class="col-lg-4 col-md-4 col-3 col-sm-3">
+                  <div class="mobile-menu-icon">
+                     <button class="tp-menu-toggle"><i class="icon-menu1"></i></button>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-md-4 col-6 col-sm-4">
+                  <div class="header__logo text-center">
+                     <a href="/"><img src="/assets/img/logo/logo.png" alt="logo" style="height: 50px;"></a>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-md-4 col-3 col-sm-5">
+                  <div class="header__info d-flex align-items-center">
+                     <div class="header__info-search tpcolor__purple ml-10 d-none d-sm-block">
+                        <button class="tp-search-toggle"><i class="icon-search"></i></button>
+                     </div>
+                     <div class="header__info-user tpcolor__yellow ml-10 d-none d-sm-block">
+                        <a href="/login/"><i class="icon-user"></i></a>
+                     </div>
+                     <div class="header__info-wishlist tpcolor__greenish ml-10 d-none d-sm-block">
+                        <a href="/wishlist/"><i class="icon-heart icons"></i></a>
+                     </div>
+                     <div class="header__info-cart tpcolor__oasis ml-10 tp-cart-toggle">
+                        <button id="cart-button"><i class="icon-cart"></i>
+                           <span id="cart-qnty-2">1</span>
+                        </button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="body-overlay"></div>
+      <!-- mobile-menu-area-end -->
+
+      <!-- sidebar-menu-area -->
+      <div class="tpsideinfo" style="z-index: 999999;">
+         <button class="tpsideinfo__close">Close<i class="fal fa-times ml-10"></i></button>
+         <div class="tpsideinfo__search text-center pt-35">
+            <span class="tpsideinfo__search-title mb-20">What Are You Looking For?</span>
+            <form action="#">
+               <input type="text" placeholder="Search Products...">
+               <button><i class="icon-search"></i></button>
+            </form>
+         </div>
+         <div class="tpsideinfo__nabtab">
+            <div class="tab-content" id="pills-tabContent">
+               <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"
+                  tabindex="0">
+                  <div class="mobile-menu"></div>
+               </div>
+               <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
+                  tabindex="0">
+                  <div class="tpsidebar-categories">
+
+                  </div>
+               </div>
+            </div>
+         </div>
+
+      </div>
+      <!-- sidebar-menu-area-end -->
+   </header>
+   <!-- header-area-end -->
+   <main>
+
+
+      <!-- shop-area-start -->
+      <section class="shop-area-start grey-bg pb-200">
+         <div class="container">
+            <div class="row">
+               <div class="col-xl-2 col-lg-12 col-md-12">
+                  <div class="tpshop__leftbar" style="margin-top: 20px;">
+                     <h4 class="tpshop__widget-title" style="display: block; text-align:left">Product Categories</h4>
+
+                     <div class="tpshop__widget mb-30 pb-25" id="checkbox-layout">
+
+                     </div>
+                     <h4 class="tpshop__widget-title">Product Sort</h4>
+
+                     <div class="tp-shop-selector">
+                        <select style="display: none;" id="sort-option">
+                           <option>Default sorting</option>
+                           <option>Price-Lowest To Highest</option>
+                           <option>Price-Highest To Lowes</option>
+                        </select>
+                        <div class="nice-select" tabindex="0">
+                           <span class="current">Default sorting</span>
+                           <ul class="list">
+                              <li data-value="Show 12" class="option selected">Default sorting</li>
+                              <li data-value="Show 14" class="option">Price-Lowest To Highest</li>
+                              <li data-value="Show 08" class="option">Price-Highest To Lowest</li>
+                           </ul>
+                        </div>
+                     </div>
+                     <button class="filter-btn" onclick="applyFilter()">Apply Filter</button>
+                     <style>
+                        .filter-btn {
+                           background: #96Ae00;
+                           color: #FFFFFF;
+                           padding: 8px;
+                           width: 100%;
+                           border-radius: 60px;
+                           margin-top: 20px;
+                        }
+                     </style>
+
+
+                  </div>
+               </div>
+               <div class="col-xl-10 col-lg-12 col-md-12" id="product-area">
+                  <div class="tpshop__top ml-60">
+                     <div class="tpsearchbar__form"
+                        style="margin-bottom: 40px; position:sticky; top:100px; z-index:98;">
+                        <div>
+                           <input type="text" name="search" placeholder="Search Product..." id="search-input">
+                           <button class="tpsearchbar__search-btn" onclick="search()"><i
+                                 class="icon-search"></i></button>
+                        </div>
+                     </div>
+                     <div class="tpshop__category">
+                        <div class="swiper-container inner-category-active">
+                           <div class="swiper-wrapper" id="category-wrapper">
+
+                              <!--Categories List Starts Here-->
+
+                              <!--Categories Lists Ends Here-->
+
+                           </div>
+                        </div>
+                     </div>
+
+                     <div>
+                        <div>
+                           <div class="row" id="main-product-lists">
+                              <div id="empty-list"
+                                 style="width:100%; display:flex; justify-content:center; align-items:center; flex-direction:column; margin:30px 0;">
+                                 <iframe
+                                    src="https://lottie.host/?file=5f7cc24e-9fbb-42c8-8205-1e9b56a5ad28/FO7yubtZct.json"></iframe>
+                                 <h2>No Product Found</h2>
+                              </div>
+
+                              <!--Lists Starts Here
+
+                              <div class="col-lg-12">
+                                 <div class="tplist__product d-flex align-items-center justify-content-between mb-20">
+                                    <div class="tplist__product-img">
+                                       <a href="#" class="tplist__product-img-one"><img
+                                             src="/assets/img/product/products41-min.jpg" alt=""></a>
+                                       <a class="tplist__product-img-two" href="/shop-details/"><img
+                                             src="/assets/img/product/products41-min.jpg" alt=""></a>
+                                       <div class="tpproduct__info bage">
+                                          <span class="tpproduct__info-hot bage__hot">HOT</span>
+                                       </div>
+                                    </div>
+                                    <div class="tplist__content">
+                                       <span>500 gram</span>
+                                       <h4 class="tplist__content-title"><a href="#">Fresh Mangosteen 100% Organic From
+                                             VietNamese</a></h4>
+
+                                       <ul class="tplist__content-info">
+                                          <li>Delicous Non-Dairy cheese sauce</li>
+                                          <li>Vegan & Allergy Friendly</li>
+                                          <li>Smooth, velvety Dairy free cheese sauce</li>
+                                       </ul>
+                                    </div>
+                                    <div class="tplist__price justify-content-end">
+                                       <h3 class="tplist__count mb-15">$56.00</h3>
+                                       <button class="tp-btn-2 mb-10">Add to cart</button>
+                                       <div class="tplist__shopping">
+                                          <button onclick="addToWishlist(doc.id)"><i class="icon-heart icons"></i> wishlist</button>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+
+                              Lists Ends Here-->
+
+                           </div>
+
+
+                        </div>
+                     </div>
+                     <div class="basic-pagination text-center mt-35">
+                        <nav>
+                           <ul>
+                              <li>
+                                 <a href="#" id="link-previous">
+                                    <i class="icon-chevrons-left"></i>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="#" class="current" id="curr">1</a>
+                              </li>
+                              <li>
+                                 <a href="#" id="link-next">
+                                    <i class="icon-chevrons-right"></i>
+                                 </a>
+                              </li>
+                           </ul>
+                        </nav>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- shop-area-end -->
+
+      <!-- feature-area-start -->
+      <section class="feature-area mainfeature__bg grey-bg pt-50 pb-40"
+         data-background="/assets/img/shape/footer-shape-1.svg">
+         <div class="container">
+            <div class="mainfeature__border pb-15">
+               <div class="services">
+                  <div class="col">
+                     <div class="mainfeature__item text-center mb-30">
+                        <div class="mainfeature__icon">
+                           <img src="/assets/img/icon/feature-icon-1.svg" alt="">
+                        </div>
+                        <div class="mainfeature__content">
+                           <h4 class="mainfeature__title">Fast Delivery</h4>
+                           <p>Across West & East India</p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col">
+                     <div class="mainfeature__item text-center mb-30">
+                        <div class="mainfeature__icon">
+                           <img src="/assets/img/icon/feature-icon-2.svg" alt="">
+                        </div>
+                        <div class="mainfeature__content">
+                           <h4 class="mainfeature__title">safe payment</h4>
+                           <p>100% Secure Payment</p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col">
+                     <div class="mainfeature__item text-center mb-30">
+                        <div class="mainfeature__icon">
+                           <img src="/assets/img/icon/feature-icon-3.svg" alt="">
+                        </div>
+                        <div class="mainfeature__content">
+                           <h4 class="mainfeature__title">Online Discount</h4>
+                           <p>Add Multi-buy Discount </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col">
+                     <div class="mainfeature__item text-center mb-30">
+                        <div class="mainfeature__icon">
+                           <img src="/assets/img/icon/feature-icon-5.svg" alt="">
+                        </div>
+                        <div class="mainfeature__content">
+                           <h4 class="mainfeature__title">Curated items</h4>
+                           <p>From Handpicked Sellers</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- feature-area-end -->
+
+   </main>
+
+   <!-- footer-area-start -->
+   <footer>
+      <div class="tpfooter__area theme-bg-2">
+         <div class="tpfooter__top pb-15">
+            <div class="container">
+               <div class="row">
+                  <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                     <div class="tpfooter__widget footer-col-1 mb-50">
+                        <h4 class="tpfooter__widget-title">Let Us Help You</h4>
+                        <p>If you have any question, please <br> contact us at:
+                           <a href="mailto:mail@kaisonline.com">mail@kaisonline.com</a>
+                        </p>
+                        <div class="tpfooter__widget-social mt-45">
+                           <span class="tpfooter__widget-social-title mb-5">Social Media:</span>
+                           <a href="#"><i class="fab fa-facebook-f"></i></a>
+                           <a href="#"><i class="fab fa-twitter"></i></a>
+                           <a href="#"><i class="fab fa-youtube"></i></a>
+                           <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                           <a href="#"><i class="fab fa-skype"></i></a>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="col-xl-2 col-lg-4 col-md-4 col-sm-5">
+                     
+                  </div>
+
+               </div>
+            </div>
+         </div>
+         <div class="tpfooter___bottom pt-40 pb-40">
+            <div class="container">
+               <div class="row">
+                  <div class="col-lg-6 col-md-7 col-sm-12">
+                     <div class="tpfooter__copyright">
+                        <span class="tpfooter__copyright-text">Copyright © <a href="https://www.azoraads.com/">Azora ads</a> all rights
+                           reserved.</a>.</span>
+                     </div>
+                  </div>
+
+               </div>
+            </div>
+         </div>
+      </div>
+   </footer>
+   <!-- footer-area-end -->
+
+
+   <!-- JS here -->
+   <script src="/assets/js/jquery.js"></script>
+   <script src="/assets/js/waypoints.js"></script>
+   <script src="/assets/js/bootstrap.bundle.min.js"></script>
+   <script src="/assets/js/swiper-bundle.js"></script>
+   <script src="/assets/js/nice-select.js"></script>
+   <script src="/assets/js/slick.js"></script>
+   <script src="/assets/js/magnific-popup.js"></script>
+   <script src="/assets/js/counterup.js"></script>
+   <script src="/assets/js/wow.js"></script>
+   <script src="/assets/js/isotope-pkgd.js"></script>
+   <script src="/assets/js/imagesloaded-pkgd.js"></script>
+   <script src="/assets/js/countdown.js"></script>
+   <script src="/assets/js/ajax-form.js"></script>
+   <script src="/assets/js/jquery-ui.js"></script>
+   <script src="/assets/js/meanmenu.js"></script>
+   <script src="/assets/js/main.js"></script>
+   <link rel="stylesheet" href="/mystyles.css">
+   <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-database.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.15.5-0/firebase.js"></script>
+   <script src="util.js"></script>
+   <script src="/cart.js"></script>
+</body>
+
+</html>

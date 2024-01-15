@@ -1,0 +1,353 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="x-ua-compatible" content="ie=edge">
+   <title>The Organic Studio - Your One-Stop Online Shop for Spices, Groceries, and Oils!</title>
+   <meta name="description" content="">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <!-- Place favicon.ico in the root directory -->
+   <link rel="shortcut icon" type="image/x-icon" href="/assets/img/logo/favicon.png">
+
+   <!-- CSS here -->
+   <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+   <link rel="stylesheet" href="/assets/css/animate.css">
+   <link rel="stylesheet" href="/assets/css/swiper-bundle.css">
+   <link rel="stylesheet" href="/assets/css/slick.css">
+   <link rel="stylesheet" href="/assets/css/magnific-popup.css">
+   <link rel="stylesheet" href="/assets/css/spacing.css">
+   <link rel="stylesheet" href="/assets/css/meanmenu.css">
+   <link rel="stylesheet" href="/assets/css/nice-select.css">
+   <link rel="stylesheet" href="/assets/css/fontawesome.min.css">
+   <link rel="stylesheet" href="/assets/css/icon-dukamarket.css">
+   <link rel="stylesheet" href="/assets/css/jquery-ui.css">
+   <link rel="stylesheet" href="/assets/css/main.css">
+   <link rel="stylesheet" href="/mystyles.css">
+
+</head>
+
+<body>
+
+
+   <div id="buffer">
+
+      <div class="error" id="error-alert">
+         <div class="error__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none">
+               <path fill="#393a37"
+                  d="m13 13h-2v-6h2zm0 4h-2v-2h2zm-1-15c-1.3132 0-2.61358.25866-3.82683.7612-1.21326.50255-2.31565 1.23915-3.24424 2.16773-1.87536 1.87537-2.92893 4.41891-2.92893 7.07107 0 2.6522 1.05357 5.1957 2.92893 7.0711.92859.9286 2.03098 1.6651 3.24424 2.1677 1.21325.5025 2.51363.7612 3.82683.7612 2.6522 0 5.1957-1.0536 7.0711-2.9289 1.8753-1.8754 2.9289-4.4189 2.9289-7.0711 0-1.3132-.2587-2.61358-.7612-3.82683-.5026-1.21326-1.2391-2.31565-2.1677-3.24424-.9286-.92858-2.031-1.66518-3.2443-2.16773-1.2132-.50254-2.5136-.7612-3.8268-.7612z">
+               </path>
+            </svg>
+         </div>
+
+         <div class="error__title">Connection Timeout</div>
+         <div class="error__close"><svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 20 20" height="20">
+               <path fill="#393a37"
+                  d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z">
+               </path>
+            </svg></div>
+      </div>
+      <svg viewBox="25 25 50 50" class="svg-spinner">
+         <circle r="20" cy="50" cx="50"></circle>
+      </svg>
+   </div>
+
+
+   <!-- Scroll-top -->
+   <button class="scroll-top scroll-to-target" data-target="html">
+      <i class="icon-chevrons-up"></i>
+   </button>
+   <!-- Scroll-top-end-->
+
+
+   <!-- header-area-start -->
+   <header>
+      <div id="header-sticky" class="header__main-area d-none d-xl-block">
+         <div class="container">
+            <div class="header__for-megamenu p-relative">
+               <div class="row align-items-center">
+                  <div class="col-xl-3">
+                     <div class="header__logo">
+                        <a href="/"><img src="/assets/img/logo/logo.png" alt="logo" style="height: 50px;"></a>
+                     </div>
+                  </div>
+                  <div class="col-xl-6">
+                     <div class="header__menu main-menu text-center">
+                        <nav id="mobile-menu">
+                           <ul>
+                              <li><a href="/">Home</a></li>
+                              </li>
+                              <li><a href="/all-products/">Products</a></li>
+                              </li>
+                              <li><a href="/my-cart/">My Cart</a></li>
+                              </li>
+                              <li><a href="/wishlist/">Wishlist</a></li>
+                              </li>
+                              <li><a href="/about-us/">About Us</a></li>
+                              <li><a href="/contact-us/">Contact Us</a></li>
+                           </ul>
+                        </nav>
+                     </div>
+                  </div>
+                  <div class="col-xl-3">
+                     <div class="header__info d-flex align-items-center">
+                        <div class="header__info-search tpcolor__purple ml-10">
+                           <button class="tp-search-toggle"><i class="icon-search"></i></button>
+                        </div>
+                        <div class="header__info-user tpcolor__yellow ml-10">
+                           <a href="/login/"><i class="icon-user"></i></a>
+                        </div>
+                        <div class="header__info-wishlist tpcolor__greenish ml-10">
+                           <a href="/wishlist/"><i class="icon-heart icons"></i></a>
+                        </div>
+                        <div class="header__info-cart tpcolor__oasis ml-10 tp-cart-toggle" style="display: none;">
+                           <button id="cart-button"><i class="icon-cart"></i>
+                              <span id="cart-qnty-1">1</span>
+                              <span id="cart-qnty-2" style="display: none;"></span>
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+
+      <!-- mobile-menu-area -->
+      <div id="header-sticky-2" class="tpmobile-menu d-xl-none">
+         <div class="container-fluid">
+            <div class="row align-items-center">
+               <div class="col-lg-4 col-md-4 col-3 col-sm-3">
+                  <div class="mobile-menu-icon">
+                     <button class="tp-menu-toggle"><i class="icon-menu1"></i></button>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-md-4 col-6 col-sm-4">
+                  <div class="header__logo text-center">
+                     <a href="/"><img src="/assets/img/logo/logo.png" alt="logo" style="height: 50px;"></a>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-md-4 col-3 col-sm-5">
+                  <div class="header__info d-flex align-items-center">
+                     <div class="header__info-user tpcolor__yellow ml-10 d-none d-sm-block">
+                        <a href="/login/"><i class="icon-user"></i></a>
+                     </div>
+                     <div class="header__info-wishlist tpcolor__greenish ml-10 d-none d-sm-block">
+                        <a href="/wishlist/"><i class="icon-heart icons"></i></a>
+                     </div>
+
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="body-overlay"></div>
+      <!-- mobile-menu-area-end -->
+
+      <!-- sidebar-menu-area -->
+      <div class="tpsideinfo">
+         <button class="tpsideinfo__close">Close<i class="fal fa-times ml-10"></i></button>
+         <div class="tpsideinfo__search text-center pt-35">
+            <span class="tpsideinfo__search-title mb-20">What Are You Looking For?</span>
+            <form action="#">
+               <input type="text" placeholder="Search Products...">
+               <button><i class="icon-search"></i></button>
+            </form>
+         </div>
+         <div class="tpsideinfo__nabtab">
+            <div class="tab-content" id="pills-tabContent">
+               <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"
+                  tabindex="0">
+                  <div class="mobile-menu"></div>
+               </div>
+               <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
+                  tabindex="0">
+                  <div class="tpsidebar-categories">
+
+                  </div>
+               </div>
+            </div>
+         </div>
+
+      </div>
+      <!-- sidebar-menu-area-end -->
+   </header>
+   <!-- header-area-end -->
+
+   <main>
+
+      <marquee behavior="scroll" direction="left" onclick="window.location.href='https://tls-kaisonline.web.app/'"
+         style="position:relative; top:0; left:0; z-index:9999; background:linear-gradient(#96AE00 , #b5d100); color:white; font-size: 20px; padding:8px 0">
+         Wanna Buy Some Fancies ? Check out our Lifestyle Studio now... Keep Your Cart Here.</marquee>
+
+      <!-- cart area -->
+      <section class="cart-area pb-80">
+         <div class="container">
+            <div class="row">
+               <div class="col-12">
+                  <form style="margin-top: 60px;">
+                     <div class="table-content table-responsive">
+                        <table class="table">
+                           <thead>
+                              <tr>
+                                 <th class="product-thumbnail">Images</th>
+                                 <th class="cart-product-name">Courses</th>
+                                 <th class="product-price">Unit Price</th>
+                                 <th class="product-quantity">Quantity</th>
+                                 <th class="product-subtotal">Total</th>
+                                 <th class="product-remove">Remove</th>
+                              </tr>
+                           </thead>
+                           <tbody id="table-body">
+
+
+                              <!--Cart Lists Starts Here
+
+                                    <tr>
+                                       <td class="product-thumbnail">
+                                          <a href="shop-details.html">
+                                             <img src="/assets/img/product/products19-min.jpg" alt="">
+                                          </a>
+                                       </td>
+                                       <td class="product-name">
+                                          <a href="shop-details.html">Summer Breakfast For Healthy Morning</a>
+                                       </td>
+                                       <td class="product-price">
+                                          <span class="amount">$130.00</span>
+                                       </td>
+                                       <td class="product-quantity">
+                                             <span class="cart-minus">-</span>
+                                             <input class="cart-input" type="text" value="1">
+                                             <span class="cart-plus">+</span>
+                                       </td>
+                                       <td class="product-subtotal">
+                                          <span class="amount">$130.00</span>
+                                       </td>
+                                       <td class="product-remove">
+                                          <a href="#"><i class="fa fa-times"></i></a>
+                                       </td>
+                                    </tr>
+
+                                    
+                                    Cart Lists Ends Here-->
+
+
+
+                           </tbody>
+                        </table>
+                     </div>
+
+                     <div class="row justify-content-end">
+                        <div class="col-md-5 ">
+                           <div class="cart-page-total">
+                              <h2>Cart totals</h2>
+                              <ul class="mb-20">
+                                 <li>Subtotal <span id="price-sub-tot"></span></li>
+                                 <li>GST(8%) <span id="price-gst"></span></li>
+                                 <li>Total <span id="price-tot"></span></li>
+                              </ul>
+                              <a href="javascript:proceedCheckout()"
+                                 class="tp-btn tp-color-btn banner-animation">Proceed to Checkout</a>
+                           </div>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- cart area end-->
+
+
+      <!-- feature-area-start -->
+      <section class="feature-area mainfeature__bg pt-50 pb-40" data-background="/assets/img/shape/footer-shape-1.svg">
+         <div class="container">
+            <div>
+               <div class="row row-cols-lg-5 row-cols-md-3 row-cols-2">
+
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- feature-area-end -->
+
+   </main>
+
+   <!-- footer-area-start -->
+
+   <!-- footer-area-start -->
+   <footer>
+      <div class="tpfooter__area theme-bg-2">
+         <div class="tpfooter__top pb-15">
+            <div class="container">
+               <div class="row">
+                  <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                     <div class="tpfooter__widget footer-col-1 mb-50">
+                        <h4 class="tpfooter__widget-title">Let Us Help You</h4>
+                        <p>If you have any question, please <br> contact us at:
+                           <a href="mailto:mail@kaisonline.com">mail@kaisonline.com</a>
+                        </p>
+                        <div class="tpfooter__widget-social mt-45">
+                           <span class="tpfooter__widget-social-title mb-5">Social Media:</span>
+                           <a href="#"><i class="fab fa-facebook-f"></i></a>
+                           <a href="#"><i class="fab fa-twitter"></i></a>
+                           <a href="#"><i class="fab fa-youtube"></i></a>
+                           <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                           <a href="#"><i class="fab fa-skype"></i></a>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="col-xl-2 col-lg-4 col-md-4 col-sm-5">
+
+                  </div>
+
+               </div>
+            </div>
+         </div>
+         <div class="tpfooter___bottom pt-40 pb-40">
+            <div class="container">
+               <div class="row">
+                  <div class="col-lg-6 col-md-7 col-sm-12">
+                     <div class="tpfooter__copyright">
+                        <span class="tpfooter__copyright-text">Copyright © <a href="https://www.azoraads.com/">Azora
+                              ads</a>.</span>
+                     </div>
+                  </div>
+
+               </div>
+            </div>
+         </div>
+      </div>
+   </footer>
+   <!-- footer-area-end -->
+
+   <!-- JS here -->
+   <script src="/assets/js/jquery.js"></script>
+   <script src="/assets/js/waypoints.js"></script>
+   <script src="/assets/js/bootstrap.bundle.min.js"></script>
+   <script src="/assets/js/swiper-bundle.js"></script>
+   <script src="/assets/js/nice-select.js"></script>
+   <script src="/assets/js/slick.js"></script>
+   <script src="/assets/js/magnific-popup.js"></script>
+   <script src="/assets/js/counterup.js"></script>
+   <script src="/assets/js/wow.js"></script>
+   <script src="/assets/js/isotope-pkgd.js"></script>
+   <script src="/assets/js/imagesloaded-pkgd.js"></script>
+   <script src="/assets/js/countdown.js"></script>
+   <script src="/assets/js/ajax-form.js"></script>
+   <script src="/assets/js/jquery-ui.js"></script>
+   <script src="/assets/js/meanmenu.js"></script>
+   <script src="/assets/js/main.js"></script>
+   <link rel="stylesheet" href="/mystyles.css">
+   <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-database.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.15.5-0/firebase.js"></script>
+   <script src="util.js"></script>
+</body>
+
+</html>

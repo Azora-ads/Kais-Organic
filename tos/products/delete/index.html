@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/tos/styles.css">
+    <title>Admin - The Organic Studio</title>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <a href="/tos/" style="text-decoration: none; font-size:16px; color:#999">Go Back</a>
+            <h1>Delete Product</h1>
+            <div class="searchbar" style="margin-right: 30px;">
+                <input type="text" placeholder="Enter Product Link" class="search-input" id="input">
+                <button class="search-btn" onclick="getData()">Search</button>
+            </div>
+            <label for="input" style="width:80vw; color: #D32F2F; font-weight:400; font-size:14px; display:none;"
+                id="error-txt">Error</label>
+            <div id="product-layout">
+                <div class="product-child">
+                    <img class="product-thumb" id="poster"
+                        src=""
+                        alt="">
+                    <h2 id="title"></h2>
+                    <input type="number" placeholder="Price" id="price">
+                    <input type="number" placeholder="Offer Price" id="off-price">
+                    <input type="text" placeholder="Label" id="label-txt">
+
+                    <h1 class="label-title">Thumbnails</h1>
+                    <div class="all-images" id="img-layout">
+
+                    </div>
+                    <h1 class="label-title">Varients</h1>
+                    <div class="allvarients" id="varient-layout">
+
+                    </div>
+                    <div class="btn-cont">
+                        <button class="main-delete" id="delete-btn" onclick="deleteData(prId)">Delete Product</button>
+                        <button class="main-edit" onclick="updateData()">Update Product</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+<style>
+    button {
+        cursor: pointer;
+    }
+
+    .main-delete,
+    .main-edit {
+        width: 100%;
+        border: none;
+        background: #D32F2F;
+        color: #FFFFFF;
+        padding: 14px 20px;
+        border-radius: 10px;
+    }
+
+    .main-edit {
+        background: green;
+    }
+
+    .btn-cont {
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        position: static;
+        margin-top: 50px;
+        display: flex;
+        justify-content: stretch;
+        gap: 5px;
+    }
+
+    @media screen and (max-width:800px) {
+        .btn-cont {
+            position: fixed;
+        }
+
+        .main-delete,
+        .main-edit {
+            border-radius: 0;
+        }
+
+    }
+
+    .label-title {
+        font-size: 25px;
+        color: #999;
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+
+    .searchbar {
+        margin: 30px 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .searchbar button {
+        padding: 12px 20px;
+        height: auto;
+        border: none;
+        color: #FFF;
+        background: teal;
+        border-radius: 6px;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .container {
+        width: auto;
+        max-width: 500px;
+        margin-right: 5vw;
+    }
+
+    #product-layout {
+        height: fit-content;
+        width: auto;
+        max-width: 600px;
+        margin-right: 60px;
+        padding: 20px;
+        background: #eeeeeea9;
+        border-radius: 10px;
+        margin-bottom: 100px;
+        display: none;
+    }
+
+    input {
+        background: #eeeeeea9;
+    }
+
+    .search-input {
+        background: #FFF;
+    }
+
+    .product-thumb {
+        width: 100%;
+    }
+
+    .product-thumb-child {
+        width: 80px;
+        border-radius: 10px;
+    }
+
+    .img-thumb-cont {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: fit-content;
+        gap: 10px
+    }
+
+    .all-images {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .img-delete {
+        border: none;
+        background: #D32F2F;
+        color: #FFFFFF;
+        padding: 6px 20px;
+        border-radius: 10px;
+    }
+
+    .allvarients {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .varient-childs {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border: 1px dashed #666;
+        padding: 10px 20px;
+        border-radius: 10px;
+    }
+
+    .varient-childs button {
+        border: none;
+        background: #D32F2F;
+        color: #FFFFFF;
+        padding: 6px 20px;
+        border-radius: 10px;
+    }
+</style>
+<script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-storage.js"></script>
+<script>
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyCV1Z8-EZWdUwPnsAiPrRn6hScbt9_AnHs",
+        authDomain: "kaisonline.firebaseapp.com",
+        projectId: "kaisonline",
+        storageBucket: "kaisonline.appspot.com",
+        messagingSenderId: "1038384566126",
+        appId: "1:1038384566126:web:0a2dab22a90c750066bb7f",
+        measurementId: "G-336STKC5HQ"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    var poster = document.getElementById('poster');
+    var title = document.getElementById('title');
+    var price = document.getElementById('price');
+    var offPrice = document.getElementById('off-price');
+    var labelTxt = document.getElementById('label-txt');
+
+    var prId = "";
+    var thumbOrg = [];
+    var thumbnails = [];
+    var thumbSub = [];
+    var variantsArray = [];
+
+
+    function getData() {
+        const url = new URL(document.querySelector('.search-input').value);
+        var prid = url.searchParams.get('productid');
+
+        if(prid){
+
+            const prodRef = db.collection("site/tos/products").doc(prid);
+
+            prodRef.get()
+                .then((doc) => {
+                    prId = doc.id;
+                    document.getElementById('error-txt').style.display = 'none';
+                    document.getElementById('error-txt').textContent = "";
+                    document.getElementById('product-layout').style.display = 'block';
+                    const data = doc.data();
+                    poster.src = data.images[0];
+                    title.textContent = data.title;
+                    price.value = data.price;
+                    offPrice.value = data.offerprice;
+                    labelTxt.value = data.label;
+                    thumbnails = data.images;
+                    thumbOrg = data.images;
+                    variantsArray = data.varients;
+                    var imgLayout = document.getElementById('img-layout');
+    
+                    for (i = 0; i < thumbnails.length; i++) {
+                        var imgThumbCont = document.createElement('div');
+                        imgThumbCont.className = 'img-thumb-cont';
+                        var productThumbChild = document.createElement('img');
+                        productThumbChild.className = 'product-thumb-child';
+                        productThumbChild.src = thumbnails[i];
+                        productThumbChild.alt = '';
+                        var imgDelete = document.createElement('button');
+                        imgDelete.className = 'img-delete';
+                        imgDelete.textContent = 'Delete';
+                        imgDelete.setAttribute('onclick', 'deleteImage("' + i + '")');
+                        imgThumbCont.appendChild(productThumbChild);
+                        imgThumbCont.appendChild(imgDelete);
+                        imgLayout.appendChild(imgThumbCont);
+                    }
+    
+                    var varlayout = document.getElementById('varient-layout');
+                    for (j = 0; j < variantsArray.length; j++) {
+                        var vchild = document.createElement('div');
+                        vchild.className = 'varient-childs';
+                        var vchildp = document.createElement('p');
+                        vchildp.textContent = variantsArray[j].label + "/" + variantsArray[j].price;
+                        var vbutton = document.createElement('button');
+                        vbutton.className = 'varient-delete';
+                        vbutton.textContent = 'Delete';
+                        vbutton.setAttribute('onclick', 'deleteVarient("' + j + '")');
+                        vchild.appendChild(vchildp);
+                        vchild.appendChild(vbutton);
+                        varlayout.appendChild(vchild);
+                    }
+                })
+                .catch((error) => {
+                    document.getElementById('product-layout').style.display = 'none';
+                    document.getElementById('error-txt').style.display = 'block';
+                    document.getElementById('error-txt').textContent = "Error in retrieving products: " + error;
+                    console.error("Error retrieving products: ", error);
+                });
+        }else{
+            alert("No Product ID Found");
+        }
+    }
+    function updateData() {
+        const updateRef = db.collection("site/tos/products").doc(prId);
+        const newData = {
+            price: price.value,
+            offerprice: offPrice.value,
+            label: labelTxt.value,
+            images: thumbnails,
+            varients: variantsArray
+
+        };
+
+        // Update the document with the new data
+        updateRef.update(newData)
+            .then(() => {
+                const storage = firebase.storage();
+
+                for (var k = 0; k < thumbSub.length; k++) {
+                    const fileRef = storage.refFromURL(thumbSub[k]);
+
+                    // Delete the file
+                    fileRef.delete()
+                        .then(() => {
+                            window.location.href = '/tos/';
+                        })
+                        .catch((error) => {
+                            console.error('Error deleting file:', error);
+                        });
+                }
+            })
+            .catch((error) => {
+                console.error('Error updating product:', error);
+            });
+    }
+
+    function deleteData(key) {
+        const deldoc = db.collection("site/tos/products").doc(key); // Replace with the actual collection name and document ID
+
+        deldoc.delete()
+            .then(() => {
+                window.location.href = '/tos/';
+            })
+            .catch((error) => {
+                console.error("Error deleting document: ", error);
+            });
+
+    }
+    function deleteImage(position) {
+        thumbSub = [];
+        var imgLayout = document.getElementById('img-layout');
+        imgLayout.removeChild(imgLayout.childNodes[position]);
+        thumbnails.splice(position, 1);
+        thumbSub = thumbOrg.filter(item => !thumbnails.includes(item));
+    }
+    function deleteVarient(position) {
+        var varlayout = document.getElementById('varient-layout');
+        varlayout.removeChild(varlayout.childNodes[position]);
+        variantsArray.splice(position, 1);
+    }
+
+</script>
+
+</html>

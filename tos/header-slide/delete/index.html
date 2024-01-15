@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/tos/styles.css">
+    <title>Admin - The Organic Studio</title>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <a href="/tos/" style="text-decoration: none; font-size:16px; color:#999">Go Back</a>
+            <h1>Delete Slide</h1>
+            <div id="slider-layout">
+
+            </div>
+        </div>
+    </main>
+</body>
+<style>
+    .container {
+        width: 90vw;
+    }
+
+    h1 {
+        margin-bottom: 30px;
+    }
+
+    .slider-child {
+        background: #EEEEEE;
+        padding: 15px;
+        border-radius: 10px;
+        width: auto;
+        margin-bottom: 10px;
+    }
+
+    .linear1 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    label {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 40vw;
+    }
+
+    button {
+        border: none;
+        background: #D32F2F;
+        color: #FFFFFF;
+        padding: 6px 20px;
+        border-radius: 10px;
+    }
+</style>
+<script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-storage.js"></script>
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyCV1Z8-EZWdUwPnsAiPrRn6hScbt9_AnHs",
+        authDomain: "kaisonline.firebaseapp.com",
+        projectId: "kaisonline",
+        storageBucket: "kaisonline.appspot.com",
+        messagingSenderId: "1038384566126",
+        appId: "1:1038384566126:web:0a2dab22a90c750066bb7f",
+        measurementId: "G-336STKC5HQ"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    const slidesRef = db.collection("site/tos/headerslides"); // Replace with the actual collection path
+
+    slidesRef.get()
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                const documentID = doc.id;
+                var child = document.createElement('div');
+                child.className = 'slider-child';
+                child.id = 'child-' + documentID;
+                var linear1 = document.createElement('div');
+                linear1.className = 'linear1';
+                var label1 = document.createElement('label');
+                label1.textContent = documentID;
+                var label2 = document.createElement('label');
+                label2.textContent = data.title;
+                var button1 = document.createElement('button');
+                button1.textContent = 'Delete';
+                button1.setAttribute('onclick', 'deleteData("' + documentID + '","'+data.image+'")');
+
+                linear1.appendChild(label1);
+                linear1.appendChild(label2);
+                linear1.appendChild(button1);
+                child.appendChild(linear1);
+                document.getElementById('slider-layout').appendChild(child);
+            });
+        })
+        .catch((error) => {
+            console.error("Error retrieving documents: ", error);
+        });
+
+    function deleteData(key,url) {
+        const deldoc = db.collection("site/tos/headerslides").doc(key); // Replace with the actual collection name and document ID
+
+        deldoc.delete()
+            .then(() => {
+                const storage = firebase.storage();
+                // Create a reference from the URL
+                const fileRef = storage.refFromURL(url);
+
+                // Delete the file
+                fileRef.delete()
+                    .then(() => {
+                        const element = document.getElementById("child-" + key); // Replace "elementId" with the actual element's ID
+                        if (element) {
+                            element.remove();
+                        }
+                        console.log("Document successfully deleted.");
+                    })
+                    .catch((error) => {
+                        console.error('Error deleting file:', error);
+                    });
+            })
+            .catch((error) => {
+                console.error("Error deleting document: ", error);
+            });
+
+    }
+
+</script>
+
+</html>

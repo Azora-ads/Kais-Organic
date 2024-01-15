@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/tos/styles.css">
+    <title>Admin - The Organic Studio</title>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <a href="/tos/" style="text-decoration: none; font-size:16px; color:#999">Go Back</a>
+            <h1>Add New Category</h1>
+            <div class="form">
+                <input type="text" placeholder="Label" id="label">
+                <input type="text" placeholder="Redirect To Category" id="category">
+                <div class="input-container">
+                    <label class="custum-file-upload" for="file">
+                        <img src="" alt="" id="img-path"
+                            style="width:100%; height:100%; display:none; object-fit:cover;">
+                        <div class="icon" id="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="" viewBox="0 0 24 24">
+                                <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+                                <g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path fill=""
+                                        d="M10 1C9.73478 1 9.48043 1.10536 9.29289 1.29289L3.29289 7.29289C3.10536 7.48043 3 7.73478 3 8V20C3 21.6569 4.34315 23 6 23H7C7.55228 23 8 22.5523 8 22C8 21.4477 7.55228 21 7 21H6C5.44772 21 5 20.5523 5 20V9H10C10.5523 9 11 8.55228 11 8V3H18C18.5523 3 19 3.44772 19 4V9C19 9.55228 19.4477 10 20 10C20.5523 10 21 9.55228 21 9V4C21 2.34315 19.6569 1 18 1H10ZM9 7H6.41421L9 4.41421V7ZM14 15.5C14 14.1193 15.1193 13 16.5 13C17.8807 13 19 14.1193 19 15.5V16V17H20C21.1046 17 22 17.8954 22 19C22 20.1046 21.1046 21 20 21H13C11.8954 21 11 20.1046 11 19C11 17.8954 11.8954 17 13 17H14V16V15.5ZM16.5 11C14.142 11 12.2076 12.8136 12.0156 15.122C10.2825 15.5606 9 17.1305 9 19C9 21.2091 10.7909 23 13 23H20C22.2091 23 24 21.2091 24 19C24 17.1305 22.7175 15.5606 20.9844 15.122C20.7924 12.8136 18.858 11 16.5 11Z"
+                                        clip-rule="evenodd" fill-rule="evenodd"></path>
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="text">
+                            <span id="text-holder">Click to upload thumbnail</span>
+                        </div>
+                        <input type="file" id="file" oninput="selectImage()">
+                    </label>
+                </div>
+                <button onclick="release()">CONFIRM & RELEASE</button>
+            </div> 
+        </div>
+        <div class="dialog">
+            <div class="card">
+                <div class="card__title">Updating Category
+                    <div class="card__subtitle">Please wait while we updating the database , Do not close the window
+                    </div>
+                    <div class="card__indicator"><span class="card__indicator-percentage" id="p-text">0%</span></div>
+                    <div class="card__progress"><progress value="0" max="100" id="progress"></progress></div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+<style>
+    button {
+        border: none;
+        display: flex;
+        justify-content: center;
+        padding: 20px 15px;
+        background-color: teal;
+        color: #ffffff;
+        font-size: 0.75rem;
+        line-height: 1rem;
+        font-weight: 700;
+        text-align: center;
+        text-transform: uppercase;
+        vertical-align: middle;
+        align-items: center;
+        border-radius: 0.5rem;
+        user-select: none;
+        gap: 0.75rem;
+        box-shadow: 0 4px 6px -1px #488aec31, 0 2px 4px -1px #488aec17;
+        transition: all .6s ease;
+        width: 70%;
+    }
+
+    button:hover {
+        box-shadow: 0 10px 15px -3px #488aec4f, 0 4px 6px -2px #488aec17;
+    }
+
+    button:focus,
+    button:active {
+        opacity: .85;
+        box-shadow: none;
+    }
+</style>
+<script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-storage.js"></script>
+<script>
+    var imageURL;
+    var file;
+    function selectImage() {
+        document.getElementById('icon').style.display = 'none';
+        file = document.getElementById('file').files[0];
+        imageURL = URL.createObjectURL(file);
+        document.getElementById('img-path').src = imageURL;
+        document.getElementById('img-path').style.display = 'block';
+
+        document.getElementById('text-holder').textContent = file.name;
+    }
+
+    // Initialize Firebase with your configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyCV1Z8-EZWdUwPnsAiPrRn6hScbt9_AnHs",
+        authDomain: "kaisonline.firebaseapp.com",
+        projectId: "kaisonline",
+        storageBucket: "kaisonline.appspot.com",
+        messagingSenderId: "1038384566126",
+        appId: "1:1038384566126:web:0a2dab22a90c750066bb7f",
+        measurementId: "G-336STKC5HQ"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    // Get a reference to the Firebase Storage service
+    const storage = firebase.storage();
+
+    // File input and progress bar
+
+    function release() {
+        const file = document.getElementById('file').files[0];
+
+        // Create a storage reference with a unique name
+        const storageRef = storage.ref('category-thumbs/' + file.name);
+
+        // Upload the file
+        const uploadTask = storageRef.put(file);
+
+        document.querySelector('.dialog').style.display = 'flex';
+        // Update the progress bar during the upload
+        uploadTask.on('state_changed',
+            (snapshot) => {
+                var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                progress = (Math.floor(progress * 10) / 10).toFixed(1);
+                document.getElementById('p-text').textContent = progress + "%";
+                document.getElementById('progress').value = progress;
+            },
+            (error) => {
+                console.error('Error uploading file: ', error);
+            },
+            () => {
+                uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+                    console.log('File download URL:', downloadURL);
+
+                    const fires = firebase.firestore();
+
+
+                    // Data to add to the document
+                    const data = {
+                        caption: document.getElementById('label').value,
+                        category: document.getElementById('category').value,
+                        thumbnail: downloadURL,
+                    };
+
+                    // Add a new document with an automatically generated random key
+                    fires.collection("site/tos/categories")
+                        .add(data)
+                        .then((docRef) => {
+                            window.location.href = '/tos/';
+                            console.log("Data written with ID: ", docRef.id);
+                        })
+                        .catch((error) => {
+                            console.error("Error adding document: ", error);
+                        });
+                });
+            }
+        );
+    }
+</script>
+</html>

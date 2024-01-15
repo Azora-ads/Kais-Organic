@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/tos/styles.css">
+    <title>Admin - The Organic Studio</title>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <a href="/tos/" style="text-decoration: none; font-size:16px; color:#999">Go Back</a>
+            <h1>Add New Offer Product</h1>
+            <div class="form">
+                <input type="text" placeholder="Paste Product URL" id="prid">
+                <br>
+                <label for="prid">
+                    Where i can find product Url?<br>
+                    <small>
+                        > Select a product on your website <br>
+                        > Copy the url from address bar <br>
+                        > Paste here , we will find the product id from there
+                    </small>
+                </label>
+                <button onclick="release()">CONFIRM & RELEASE</button>
+
+
+            </div>
+        </div>
+        <div class="dialog">
+            <div class="card">
+                <div class="card__title">Updating Contents
+                    <div class="card__subtitle">Please wait while we updating the database , Do not close the window
+                    </div>
+                    <div class="card__indicator"><span class="card__indicator-percentage" id="p-text">0%</span></div>
+                    <div class="card__progress"><progress value="0" max="100" id="progress"></progress></div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+<style>
+    button {
+        margin-top: 40px;
+        border: none;
+        display: flex;
+        justify-content: center;
+        padding: 15px 15px;
+        background-color: teal;
+        color: #ffffff;
+        font-size: 0.75rem;
+        line-height: 1rem;
+        font-weight: 700;
+        text-align: center;
+        text-transform: uppercase;
+        vertical-align: middle;
+        align-items: center;
+        border-radius: 0.5rem;
+        user-select: none;
+        gap: 0.75rem;
+        box-shadow: 0 4px 6px -1px #488aec31, 0 2px 4px -1px #488aec17;
+        transition: all .6s ease;
+        width: 50%;
+    }
+
+    button:hover {
+        box-shadow: 0 10px 15px -3px #488aec4f, 0 4px 6px -2px #488aec17;
+    }
+
+    button:focus,
+    button:active {
+        opacity: .85;
+        box-shadow: none;
+    }
+
+    label {
+        color: #999;
+    }
+</style>
+<script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-storage.js"></script>
+
+<script>
+    // Initialize Firebase with your configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyCV1Z8-EZWdUwPnsAiPrRn6hScbt9_AnHs",
+        authDomain: "kaisonline.firebaseapp.com",
+        projectId: "kaisonline",
+        storageBucket: "kaisonline.appspot.com",
+        messagingSenderId: "1038384566126",
+        appId: "1:1038384566126:web:0a2dab22a90c750066bb7f",
+        measurementId: "G-336STKC5HQ"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    function release() {
+        const url = new URL(document.getElementById('prid').value);
+        var prid = url.searchParams.get('productid');
+        if(prid){
+            const fires = firebase.firestore();
+
+
+            // Data to add to the document
+            const data = {
+                productid: prid,
+            };
+
+            // Add a new document with an automatically generated random key
+            fires.collection("site/tos/offers")
+                .add(data)
+                .then((docRef) => {
+                    window.location.href = '/tos/';
+                    console.log("Data written with ID: ", docRef.id);
+                })
+                .catch((error) => {
+                    console.error("Error adding document: ", error);
+                });
+        }else{
+            alert('This Url Doesn\'t Contain Product ID , Try Another');
+        }
+    }
+</script>
+
+</html>
